@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LineIntel - AI-Powered Power Line Inspection</title>
+    <meta name="description" content="Advanced drone technology and AI for power line inspection. Detect vegetation hazards, structural issues, and compliance risks.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: #14a085;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(20, 160, 133, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(20, 160, 133, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(20, 160, 133, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-text .highlight {
+            color: #14a085;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: rgba(20, 160, 133, 0.2);
+            color: #14a085;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(20, 160, 133, 0.3);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 1.5rem;
+            color: #14a085;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .btn {
+            background: #14a085;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: #0f8a73;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .section-title .highlight {
+            color: #14a085;
+        }
+        
+        /* Problem/Solution */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 2rem;
+        }
+        
+        .problem, .solution {
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .problem {
+            background: #fff5f5;
+            border-color: #fed7d7;
+        }
+        
+        .solution {
+            background: #f0fff4;
+            border-color: #9ae6b4;
+            position: relative;
+        }
+        
+        .solution::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #14a085, #16c79a);
+            border-radius: 10px;
+            z-index: -1;
+        }
+        
+        .problem h3, .solution h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .problem h3 {
+            color: #e53e3e;
+        }
+        
+        .solution h3 {
+            color: #14a085;
+        }
+        
+        .problem ul, .solution ul {
+            list-style: none;
+        }
+        
+        .problem li, .solution li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .problem li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+        
+        .solution li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #14a085;
+            font-weight: bold;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: #f8f9fa;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #14a085;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #14a085;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        /* Interactive Demo */
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .demo-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .detection-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #14a085;
+            background: rgba(20, 160, 133, 0.3);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(20, 160, 133, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(20, 160, 133, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(20, 160, 133, 0); }
+        }
+        
+        .detection-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .detection-info.active {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="/static/logo.png" alt="LineIntel Logo">
+                <span>Line<span class="logo-text">Intel</span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="status-badge">🚀 Launching Soon</div>
+                    <h1><span class="highlight">AI-Powered</span> Power Line Inspection</h1>
+                    <p>Advanced drone technology and artificial intelligence to detect vegetation hazards, structural issues, and compliance risks before they become problems.</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Get Early Access</h3>
+                    <div id="message" class="message"></div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" required placeholder="Your company">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message-text" name="message" rows="3" required placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Contact Us</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>The LineIntel <span class="highlight">Advantage</span></h2>
+                <p>Traditional power line inspection is costly, time-consuming, and dangerous. LineIntel transforms this critical infrastructure maintenance with cutting-edge technology.</p>
+            </div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h3>⚠️ Traditional Approach</h3>
+                    <ul>
+                        <li>Manual helicopter or ground inspections</li>
+                        <li>High risk to personnel safety</li>
+                        <li>Expensive and time-consuming</li>
+                        <li>Inconsistent data collection</li>
+                        <li>Reactive maintenance approach</li>
+                        <li>Limited data analysis capabilities</li>
+                    </ul>
+                </div>
+                <div class="solution">
+                    <h3>✓ The LineIntel Solution</h3>
+                    <ul>
+                        <li>Autonomous drone fleet deployment</li>
+                        <li>Zero risk to personnel</li>
+                        <li>80% cost reduction</li>
+                        <li>Standardized high-resolution data</li>
+                        <li>Predictive maintenance with AI</li>
+                        <li>Advanced analytics and reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How <span class="highlight">LineIntel</span> Works</h2>
+                <p>Our end-to-end solution combines autonomous drones, AI-powered analysis, and actionable insights to revolutionize power line inspection and maintenance.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Drone Flyover</h3>
+                    <p>Autonomous drones capture high-resolution imagery and sensor data along power line corridors using specialized equipment.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Analysis</h3>
+                    <p>Our proprietary algorithms process the data to identify vegetation encroachment, structural issues, and compliance risks in real-time.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Report Delivery</h3>
+                    <p>Detailed reports with prioritized maintenance recommendations and risk assessments are delivered to your team within hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced <span class="highlight">Features</span></h2>
+                <p>LineIntel combines cutting-edge hardware and software to deliver comprehensive power line inspection solutions.</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🚁</div>
+                    <h3>Autonomous Drones</h3>
+                    <p>Custom-built drones with specialized sensors for power line inspection that operate autonomously along predefined routes.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Detection</h3>
+                    <p>AI algorithms identify issues in real-time, flagging critical problems for immediate attention.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Vegetation Management</h3>
+                    <p>Precise identification of encroaching vegetation with growth prediction models to prevent outages.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Structural Analysis</h3>
+                    <p>Detailed inspection of towers, poles, and hardware to detect corrosion, damage, and other structural issues.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Comprehensive reporting with prioritized maintenance recommendations and historical comparison.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Integration API</h3>
+                    <p>Seamless integration with existing asset management and maintenance planning systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>See <span class="highlight">AI Detection</span> in Action</h2>
+                <p>Hover over the detection points to see how our AI identifies and categorizes potential issues in real-time.</p>
+            </div>
+            <div class="demo-container">
+                <img src="/static/powerline-demo.jpg" alt="Power line inspection demo" class="demo-image">
+                
+                <!-- Detection Points -->
+                <div class="detection-point" style="top: 25%; left: 35%;" 
+                     onmouseover="showDetection('vegetation')" 
+                     onmouseout="hideDetection()"></div>
+                
+                <div class="detection-point" style="top: 45%; left: 65%;" 
+                     onmouseover="showDetection('structural')" 
+                     onmouseout="hideDetection()"></div>
+                
+                <div class="detection-point" style="top: 65%; left: 50%;" 
+                     onmouseover="showDetection('insulator')" 
+                     onmouseout="hideDetection()"></div>
+                
+                <!-- Detection Info Panel -->
+                <div id="detectionInfo" class="detection-info">
+                    <h4 id="detectionTitle">AI Detection Results</h4>
+                    <p id="detectionDescription">Hover over the pulsing points to see detection details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 LineIntel. All rights reserved. | Revolutionizing power line inspection with AI.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const messageDiv = document.getElementById('message');
+            const submitBtn = this.querySelector('.btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            fetch('/contact', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'message ' + data.status;
+                messageDiv.textContent = data.message;
+                
+                if (data.status === 'success') {
+                    this.reset();
+                }
+            })
+            .catch(error => {
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'message error';
+                messageDiv.textContent = 'An error occurred. Please try again.';
+            })
+            .finally(() => {
+                submitBtn.textContent = 'Contact Us';
+                submitBtn.disabled = false;
+            });
+        });
+        
+        // Interactive Demo Functions
+        const detections = {
+            vegetation: {
+                title: 'Vegetation Encroachment Detected',
+                description: 'Tree branches too close to power lines, creating potential for outages during storms. Recommended action: Trim vegetation within 30 days.'
+            },
+            structural: {
+                title: 'Structural Damage Identified',
+                description: 'Corrosion detected on transmission tower, requiring maintenance within 30 days. Risk level: Medium priority.'
+            },
+            insulator: {
+                title: 'Insulator Degradation Found',
+                description: 'Cracked insulator identified, posing risk of flashover during wet conditions. Risk level: High priority.'
+            }
+        };
+        
+        function showDetection(type) {
+            const info = document.getElementById('detectionInfo');
+            const title = document.getElementById('detectionTitle');
+            const description = document.getElementById('detectionDescription');
+            
+            title.textContent = detections[type].title;
+            description.textContent = detections[type].description;
+            info.classList.add('active');
+        }
+        
+        function hideDetection() {
+            const info = document.getElementById('detectionInfo');
+            info.classList.remove('active');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
