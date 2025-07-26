@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
+import GlobalSearch from "./global-search"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,14 +17,14 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <a href="#" className="flex items-center space-x-2">
+            <a href="/" className="flex items-center space-x-2">
               <div className="relative w-10 h-10">
                 <Image
-                  src="/lineintel-logo.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-06-03%20095436-gGUrB8NchoGWNiohRvWpxPoGz0AdaE.png"
                   alt="LineIntel Logo"
                   width={40}
                   height={40}
-                  className="w-full h-full"
+                  className="w-full h-full rounded-full"
                 />
               </div>
               <span className="text-xl font-bold text-white">
@@ -34,15 +35,27 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {["Home", "Solution", "How It Works", "Features", "Contact"].map((item) => (
+            {["Home", "Solution", "Products", "Features", "Contact"].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                href={item === "Home" ? "/" : `#${item.toLowerCase().replace(/\s+/g, "-")}`}
                 className="text-gray-300 hover:text-teal-400 transition-colors duration-200 text-sm font-medium"
               >
                 {item}
               </a>
             ))}
+
+            {/* Global Search - Desktop */}
+            <div className="w-64">
+              <GlobalSearch />
+            </div>
+
+            <a
+              href="/mobile-app"
+              className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-md border border-gray-700 transition-all duration-200 text-sm"
+            >
+              Download Our App
+            </a>
             <a
               href="#contact"
               className="px-4 py-2 bg-teal-500 hover:bg-teal-400 text-gray-900 font-medium rounded-md transition-all duration-200 text-sm"
@@ -64,17 +77,29 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-gray-900 border-t border-gray-800">
           <div className="container mx-auto px-4 py-4">
+            {/* Global Search - Mobile */}
+            <div className="mb-4">
+              <GlobalSearch />
+            </div>
+
             <nav className="flex flex-col space-y-4">
-              {["Home", "Solution", "How It Works", "Features", "Contact"].map((item) => (
+              {["Home", "Solution", "Products", "Features", "Contact"].map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={item === "Home" ? "/" : `#${item.toLowerCase().replace(/\s+/g, "-")}`}
                   className="text-gray-300 hover:text-teal-400 transition-colors duration-200 py-2 text-sm font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
                 </a>
               ))}
+              <a
+                href="/mobile-app"
+                className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-md border border-gray-700 transition-all duration-200 text-sm inline-block"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Download Our App
+              </a>
               <a
                 href="#contact"
                 className="px-4 py-2 bg-teal-500 hover:bg-teal-400 text-gray-900 font-medium rounded-md transition-all duration-200 text-sm inline-block"

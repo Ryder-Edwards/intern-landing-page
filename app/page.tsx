@@ -1,13 +1,87 @@
 import Image from "next/image"
-import { CircuitBoard, Zap, Shield, BarChartIcon as ChartBar, DrillIcon as Drone, Leaf } from "lucide-react"
+import { CircuitBoard, Zap, Shield, BarChartIcon as ChartBar, Plane, Leaf, Award } from "lucide-react"
 import ContactForm from "@/components/contact-form"
-import FeatureCard from "@/components/feature-card"
-import HowItWorks from "@/components/how-it-works"
 import InteractiveDemo from "@/components/interactive-demo"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
 export default function Home() {
+  const products = [
+    {
+      title: "Vegetation Management",
+      description:
+        "AI-powered detection and monitoring of vegetation encroachment near power lines with certified arborist reports.",
+      icon: <Leaf className="w-12 h-12 text-teal-400" />,
+      href: "/products/vegetation-management",
+    },
+    {
+      title: "Structural Inspection",
+      description: "Comprehensive analysis of poles, towers, and hardware for damage and wear.",
+      icon: <Shield className="w-12 h-12 text-teal-400" />,
+      href: "/products/structural-inspection",
+    },
+    {
+      title: "Compliance Monitoring",
+      description: "Automated compliance checking and regulatory reporting for utility standards.",
+      icon: <CircuitBoard className="w-12 h-12 text-teal-400" />,
+      href: "/products/compliance-monitoring",
+    },
+    {
+      title: "Emergency Response",
+      description: "Rapid deployment for storm damage assessment and emergency inspections.",
+      icon: <Zap className="w-12 h-12 text-teal-400" />,
+      href: "/products/emergency-response",
+    },
+    {
+      title: "Predictive Maintenance",
+      description: "Data-driven insights to predict and prevent equipment failures before they occur.",
+      icon: <ChartBar className="w-12 h-12 text-teal-400" />,
+      href: "/products/predictive-maintenance",
+    },
+  ]
+
+  const features = [
+    {
+      icon: <Plane className="w-10 h-10 text-teal-400" />,
+      title: "Autonomous Drones",
+      description:
+        "Custom-built drones with specialized sensors for power line inspection that operate autonomously along predefined routes.",
+      href: "/features/autonomous-drones",
+    },
+    {
+      icon: <Zap className="w-10 h-10 text-teal-400" />,
+      title: "Real-time Detection",
+      description: "AI algorithms identify issues in real-time, flagging critical problems for immediate attention.",
+      href: "/features/real-time-detection",
+    },
+    {
+      icon: <Leaf className="w-10 h-10 text-teal-400" />,
+      title: "Certified Vegetation Analysis",
+      description:
+        "ISA Certified Arborist on staff provides expert vegetation assessment and regulatory-compliant reports.",
+      href: "/features/certified-vegetation-analysis",
+    },
+    {
+      icon: <Shield className="w-10 h-10 text-teal-400" />,
+      title: "Structural Analysis",
+      description:
+        "Detailed inspection of towers, poles, and hardware to detect corrosion, damage, and other structural issues.",
+      href: "/features/structural-analysis",
+    },
+    {
+      icon: <ChartBar className="w-10 h-10 text-teal-400" />,
+      title: "Analytics Dashboard",
+      description: "Comprehensive reporting with prioritized maintenance recommendations and historical comparison.",
+      href: "/features/analytics-dashboard",
+    },
+    {
+      icon: <CircuitBoard className="w-10 h-10 text-teal-400" />,
+      title: "Integration API",
+      description: "Seamless integration with existing asset management and maintenance planning systems.",
+      href: "/features/integration-api",
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-white">
       <Navbar />
@@ -21,7 +95,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 text-sm font-medium mb-2">
-                <span className="mr-1">•</span> Launching Soon
+                <Award className="w-4 h-4 mr-2" />
+                Certified Arborist on Staff
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-200">
@@ -31,7 +106,8 @@ export default function Home() {
               </h1>
               <p className="text-xl text-gray-300">
                 Advanced drone technology and artificial intelligence to detect vegetation hazards, structural issues,
-                and compliance risks before they become problems.
+                and compliance risks before they become problems. Backed by certified arborist expertise for
+                regulatory-compliant reports.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -41,10 +117,10 @@ export default function Home() {
                   Contact Us
                 </a>
                 <a
-                  href="#how-it-works"
+                  href="#products"
                   className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-md border border-gray-700 transition-all duration-200 text-center"
                 >
-                  Learn More
+                  View Products
                 </a>
               </div>
             </div>
@@ -79,7 +155,7 @@ export default function Home() {
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto">
               Traditional power line inspection is costly, time-consuming, and dangerous. LineIntel transforms this
-              critical infrastructure maintenance with cutting-edge technology.
+              critical infrastructure maintenance with cutting-edge technology and certified arborist expertise.
             </p>
           </div>
 
@@ -96,7 +172,7 @@ export default function Home() {
                     "Expensive and time-consuming",
                     "Inconsistent data collection",
                     "Reactive maintenance approach",
-                    "Limited data analysis capabilities",
+                    "Limited certified expertise",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start">
                       <span className="text-red-400 mr-2">✕</span>
@@ -120,7 +196,7 @@ export default function Home() {
                     "80% cost reduction",
                     "Standardized high-resolution data",
                     "Predictive maintenance with AI",
-                    "Advanced analytics and reporting",
+                    "ISA Certified Arborist reports",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start">
                       <span className="text-teal-400 mr-2">✓</span>
@@ -134,21 +210,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-20 relative" id="how-it-works">
+      {/* Products Section */}
+      <section className="py-20 relative" id="products">
         <div className="absolute inset-0 bg-[url('/circuit-pattern.png')] bg-repeat opacity-5"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              How <span className="text-teal-400">LineIntel</span> Works
+              Our <span className="text-teal-400">Products</span>
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto">
-              Our end-to-end solution combines autonomous drones, AI-powered analysis, and actionable insights to
-              revolutionize power line inspection and maintenance.
+              Comprehensive AI-powered solutions for every aspect of power line inspection and maintenance, backed by
+              certified arborist expertise.
             </p>
           </div>
 
-          <HowItWorks />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <a
+                key={index}
+                href={product.href}
+                className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 transition-all duration-300 hover:border-teal-500/50 hover:bg-gray-800/80 group cursor-pointer"
+              >
+                <div className="mb-4 bg-gray-900/50 p-4 rounded-lg inline-block group-hover:bg-teal-500/10 transition-colors duration-300">
+                  {product.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-teal-400 transition-colors">
+                  {product.title}
+                </h3>
+                <p className="text-gray-300">{product.description}</p>
+                <div className="mt-4 text-teal-400 text-sm font-medium group-hover:text-teal-300 transition-colors">
+                  Learn More →
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -160,42 +255,30 @@ export default function Home() {
               Advanced <span className="text-teal-400">Features</span>
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto">
-              LineIntel combines cutting-edge hardware and software to deliver comprehensive power line inspection
-              solutions.
+              LineIntel combines cutting-edge hardware and software with certified arborist expertise to deliver
+              comprehensive power line inspection solutions.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={<Drone className="w-10 h-10 text-teal-400" />}
-              title="Autonomous Drones"
-              description="Custom-built drones with specialized sensors for power line inspection that operate autonomously along predefined routes."
-            />
-            <FeatureCard
-              icon={<Zap className="w-10 h-10 text-teal-400" />}
-              title="Real-time Detection"
-              description="AI algorithms identify issues in real-time, flagging critical problems for immediate attention."
-            />
-            <FeatureCard
-              icon={<Leaf className="w-10 h-10 text-teal-400" />}
-              title="Vegetation Management"
-              description="Precise identification of encroaching vegetation with growth prediction models to prevent outages."
-            />
-            <FeatureCard
-              icon={<Shield className="w-10 h-10 text-teal-400" />}
-              title="Structural Analysis"
-              description="Detailed inspection of towers, poles, and hardware to detect corrosion, damage, and other structural issues."
-            />
-            <FeatureCard
-              icon={<ChartBar className="w-10 h-10 text-teal-400" />}
-              title="Analytics Dashboard"
-              description="Comprehensive reporting with prioritized maintenance recommendations and historical comparison."
-            />
-            <FeatureCard
-              icon={<CircuitBoard className="w-10 h-10 text-teal-400" />}
-              title="Integration API"
-              description="Seamless integration with existing asset management and maintenance planning systems."
-            />
+            {features.map((feature, index) => (
+              <a
+                key={index}
+                href={feature.href}
+                className="bg-gray-800/50 rounded-lg p-6 border border-gray-700 transition-all duration-300 hover:border-teal-500/50 hover:bg-gray-800/80 group cursor-pointer"
+              >
+                <div className="mb-4 bg-gray-900/50 p-4 rounded-lg inline-block group-hover:bg-teal-500/10 transition-colors duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-teal-400 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-300">{feature.description}</p>
+                <div className="mt-4 text-teal-400 text-sm font-medium group-hover:text-teal-300 transition-colors">
+                  Learn More →
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -226,7 +309,7 @@ export default function Home() {
               </h2>
               <p className="text-gray-300 mb-6">
                 Contact us today to learn how LineIntel can help your utility company improve safety, reduce costs, and
-                enhance reliability through AI-powered inspection technology.
+                enhance reliability through AI-powered inspection technology backed by certified arborist expertise.
               </p>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -298,7 +381,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-white">Location</h3>
-                    <p className="text-gray-300">San Francisco, CA</p>
+                    <p className="text-gray-300">Based out of Tennessee and Florida</p>
                   </div>
                 </div>
               </div>

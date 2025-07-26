@@ -12,21 +12,21 @@ export default function InteractiveDemo() {
       label: "Vegetation Encroachment",
       description: "Tree branches too close to power lines, creating potential for outages during storms.",
       color: "bg-yellow-500",
-      position: "top-[20%] left-[30%] w-16 h-16",
+      position: "top-[25%] left-[20%] w-16 h-16",
     },
     {
       id: "structural",
-      label: "Structural Damage",
-      description: "Corrosion detected on transmission tower, requiring maintenance within 30 days.",
-      color: "bg-red-500",
-      position: "top-[40%] left-[60%] w-14 h-14",
+      label: "Structural Assessment",
+      description: "Utility pole condition monitored for signs of wear, damage, or maintenance needs.",
+      color: "bg-blue-500",
+      position: "top-[45%] left-[50%] w-14 h-14",
     },
     {
-      id: "insulator",
-      label: "Insulator Degradation",
-      description: "Cracked insulator identified, posing risk of flashover during wet conditions.",
-      color: "bg-orange-500",
-      position: "top-[60%] left-[45%] w-12 h-12",
+      id: "clearance",
+      label: "Clearance Violation",
+      description: "Vegetation growth detected within minimum clearance distance from power lines.",
+      color: "bg-red-500",
+      position: "top-[30%] left-[75%] w-12 h-12",
     },
   ]
 
@@ -34,10 +34,10 @@ export default function InteractiveDemo() {
     <div className="max-w-4xl mx-auto">
       <div className="relative rounded-lg overflow-hidden border border-gray-700 group">
         <Image
-          src="/powerline-inspection.jpg"
-          alt="Power line inspection"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/istockphoto-525343076-612x612.jpg-mchciKVVM0oSerpedjKiRHE7AoLgPI.jpeg"
+          alt="Power line inspection - vegetation management"
           width={1200}
-          height={675}
+          height={800}
           className="w-full h-auto object-cover"
         />
 

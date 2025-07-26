@@ -1,9 +1,9 @@
-import { DrillIcon as Drone, Cpu, BarChart3, Wrench } from "lucide-react"
+import { Cpu, BarChart3, Wrench, Plane } from "lucide-react"
 
 export default function HowItWorks() {
   const steps = [
     {
-      icon: <Drone className="w-8 h-8 text-teal-400" />,
+      icon: <Plane className="w-8 h-8 text-teal-400" />,
       title: "Data Collection",
       description: "Autonomous drones capture high-resolution imagery and sensor data along power line corridors.",
     },
